@@ -4,18 +4,48 @@
       <Header title="Task Tracker" />
       <Button label="Add task" color="green" />
     </nav>
+    <Tasks :tasks="tasks" />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
 import Button from './components/Button.vue';
+import Tasks from './components/Tasks.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
     Button,
+    Tasks,
+  },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: "Doctor's Appointment",
+        day: 'May 22nd at 6:00pm',
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: 'Joining formality',
+        day: 'May 24nd at 10:00am',
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: 'Farewell',
+        day: 'May 20nd at 6:00pm',
+        reminder: false,
+      },
+    ];
   },
 };
 </script>
@@ -32,7 +62,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width: 80%;
+  width: 40%;
   margin: 30px auto;
 }
 
