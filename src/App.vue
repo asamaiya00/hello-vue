@@ -4,7 +4,7 @@
       <Header title="Task Tracker" />
       <Button label="Add task" color="green" />
     </nav>
-    <Tasks :tasks="tasks" />
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
@@ -24,6 +24,11 @@ export default {
     return {
       tasks: [],
     };
+  },
+  methods: {
+    deleteTask(id) {
+      this.tasks = this.tasks.filter((task) => task.id !== id);
+    },
   },
   created() {
     this.tasks = [
