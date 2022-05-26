@@ -4,6 +4,7 @@
       <Header title="Task Tracker" />
       <Button label="Add task" color="green" />
     </nav>
+    <AddTask @add-task="addTask" />
     <Tasks
       @toggle-reminder="toggleReminder"
       @delete-task="deleteTask"
@@ -16,6 +17,7 @@
 import Header from './components/Header.vue';
 import Button from './components/Button.vue';
 import Tasks from './components/Tasks.vue';
+import AddTask from './components/AddTask.vue';
 
 export default {
   name: 'App',
@@ -23,6 +25,7 @@ export default {
     Header,
     Button,
     Tasks,
+    AddTask,
   },
   data() {
     return {
@@ -38,6 +41,9 @@ export default {
       this.tasks = this.tasks.map((task) =>
         task.id === id ? { ...task, reminder: !task.reminder } : task
       );
+    },
+    addTask(newTask) {
+      this.tasks = [...this.tasks, newTask];
     },
   },
   created() {
