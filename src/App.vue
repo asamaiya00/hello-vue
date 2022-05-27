@@ -2,9 +2,15 @@
   <div class="container">
     <nav>
       <Header title="Task Tracker" />
-      <Button label="Add task" color="green" />
+      <Button
+        @btn-click="toggleAddTask"
+        :label="!showAddTask ? 'Add task' : 'Close'"
+        :color="!showAddTask ? 'green' : 'red'"
+      />
     </nav>
-    <AddTask @add-task="addTask" />
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
     <Tasks
       @toggle-reminder="toggleReminder"
       @delete-task="deleteTask"
@@ -30,6 +36,7 @@ export default {
   data() {
     return {
       tasks: [],
+      showAddTask: false,
     };
   },
   methods: {
@@ -44,6 +51,9 @@ export default {
     },
     addTask(newTask) {
       this.tasks = [...this.tasks, newTask];
+    },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     },
   },
   created() {

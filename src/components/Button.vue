@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     handleClick() {
-      console.log('btn clicked');
+      this.$emit('btn-click');
     },
   },
 };
