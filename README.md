@@ -1,4 +1,4 @@
-# hello-vue
+# task-tracker
 
 ## Project setup
 ```
